@@ -1,5 +1,4 @@
 # Leistungsdiagnostik
-**(kurze Beschreibung des Ziels)**
 
 Werkzeug zur Vereinfachung und Automatisierung von Leistungstests, basierend auf EKG-Daten und Leistungswerten und Patient:innen-Daten
 Mit der Software können die vom Ergometer und vom EKG gespeicherten Daten ausgelesen, gespeichert, ausgewertet und visualisiert werden. Bei Unregelmäßigkeiten oder medizinisch alarmierenden Werten soll ein Alarm ausgelöst werden.
@@ -7,15 +6,12 @@ Das Programm soll dabei fließend und möglichst ohne Zeitverzögerung die verar
 
 ## Installation
 
-(Was muss man tun, bevor man das Werkzeug nutzen kann?)
-Die Software auf einem handelsüblichen PC installiert werden, der über Datenleitungen mit dem Ergometer und dem EKG verbunden ist. Der PC muss keine besonderen Anforderungen erfüllen. Die Installation erfolgt dabei über einen Download aus dem Internet, nach erwerben der Lizenz.
+Die Software muss auf einem handelsüblichen PC installiert werden, der über Datenleitungen mit dem Ergometer und dem EKG verbunden ist. Der PC muss keine besonderen Anforderungen erfüllen. Die Installation erfolgt dabei über einen Download aus dem Internet, nach Erwerb der Lizenz.
 Eine richtige Verwendung des Ergometers und ein korrektes Kleben der EKG-Elektroden wird vorausgesetzt.
 
 t.b.d.
 
 ## Usage
-
-(Wie benutzt man das Werkzeug. Wo müssen Daten in welcher Form liegen?)
 
 Start über Kommandozeile
 ```python main.py```
