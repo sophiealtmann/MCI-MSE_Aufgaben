@@ -11,20 +11,19 @@ Diese Software wird vorerst als Proof-Of-Concept geschrieben, welche die Daten a
 ### Other background information
 
 Abbruchkriterien werden wie folgt definiert:
-  * Puls 90% der maximalen Herzfrequenz
-  * Herzrythmusstörungen
-  * Nichteinhalten des vorgegeben Widerstandswertes
+* Puls 90% der maximalen Herzfrequenz
+* Herzrythmusstörungen
+* Nichteinhalten des vorgegeben Widerstandswertes
 Weiters können die Abbruchkriterien nachträglich manuell bearbeitet werden. 
 
 ## Perspectives
 ### Who will use the system?
 
-Diagnostiker:innen 
+Diagnostiker:innen, die Leistungstests an Sportler:innen durchführen. 
 
 ### Who can provide input about the system?
 
-Der Input wird von einem Probanden:in erzeugt und von einem EKG und einem Ergometer aufgezeichnet. 
-
+Der Input wird von einem Probanden:in erzeugt und von einem EKG und einem Ergometer aufgezeichnet.
 
 ## Project Objectives
 ### Known business rules
