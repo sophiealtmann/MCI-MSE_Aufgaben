@@ -25,6 +25,9 @@ Diagnostiker:innen, die Leistungstests an Sportler:innen durchführen.
 
 Der Input wird von einem Probanden:in erzeugt und von einem EKG und einem Ergometer aufgezeichnet.
 
+NOTE-JHU: Hier geht es eher darum, bei wem man zusätzlich Information über das System abholen kann ;) Bei mir zum Beispiel.
+
+
 ## Project Objectives
 ### Known business rules
 
@@ -58,6 +61,8 @@ Wird ein Abbruchkritterium erfüllt und von der Testleitung ignoriert, können f
 * Herzrythmusstörungen aufgrund von Überschreitung der Belastungsgrenze.
 * Übelkeit und Erbrechen nach Überanstrengung
 * Dehydrierung 
+
+NOTE-JHU: Hier geht es vorallem auch um die Risiken bei der technischen Entwicklung. Z.B. wenn die Daten nicht zuverlässig erzeugt werdne würden o.ä.
 
 ## Known future enhancements
 
