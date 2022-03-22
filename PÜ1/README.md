@@ -4,6 +4,8 @@ Werkzeug zur Vereinfachung und Automatisierung von Leistungstests, basierend auf
 Mit der Software können die vom Ergometer und vom EKG gespeicherten Daten ausgelesen, gespeichert, ausgewertet und visualisiert werden. Bei Unregelmäßigkeiten oder medizinisch alarmierenden Werten soll ein Alarm ausgelöst werden.
 Das Programm soll dabei fließend und möglichst ohne Zeitverzögerung die verarbeiteten Daten auf einem Bildschirm anzeigen.
 
+HINWEIS Julian: Sehr gut. Bei der Entwicklung werden wir uns zunächst auf die Auswertung von bestehenden Daten konzentrieren. Also keine Echtzeit-Alarme nötig.
+
 ## Installation
 
 Die Software muss auf einem handelsüblichen PC installiert werden, der über Datenleitungen mit dem Ergometer und dem EKG verbunden ist. Der PC muss keine besonderen Anforderungen erfüllen. Die Installation erfolgt dabei über einen Download aus dem Internet, nach Erwerb der Lizenz.
