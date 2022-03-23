@@ -44,9 +44,9 @@ Beispiel von aufgezeichneten EKG Daten
 Aus diesem muss die Herzrate bestimmt werden.
 
 ### Assumptions and dependencies
-
-Die Software hängt von der Korrektheit der eingelesen Daten ab. Es wird keine Haftung für Fehler übernommen, welche auf der Eingabe von inkorrekten Daten basiert.
-Weiters muss der Proband:in die vorgegebene Mindestleistung erfüllen. 
+* Die Dateien ecg_data_subject enthalten die vom EKG aufgezeichneten Daten, sowie einen Index und sind als CSV-Dateien abgespeichert. 
+* Die Dateien power_data enthalten die während des Leistungstests erzeugten Watt und sind in einer Textdatei abgespeichert.
+* Die Dateien subject enthalten Informationen zu den Testpersonen. Darin ist die Subject-ID, die erzeugten Watt während des Tests, das Geburtsjahr sowie die Testdauer gespeichert. Die Informationen sind als json-Datei gespeichert. 
 
 ### Design and implementation constraints
 
