@@ -2,7 +2,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# %% Öffnen der Datei und konvertieren zu numpy-Array und Erstellen des Plots
+# %% Öffnen der Datei, konvertieren zu numpy-Array und erstellen der Plots innerhalb der For-Schleife.
+# Der Dateiname wird durch einen String der unterschiedlichen Dateinummern unterbrochen.
 for i in range(1,4):
     file_name =  'input_data/power_data_' + str(i) + '.txt'
     power_data_watts = open(file_name).read().split("\n")
