@@ -48,6 +48,9 @@ Aus diesem muss die Herzrate bestimmt werden.
 * Die Dateien power_data enthalten die während des Leistungstests erzeugten Watt und sind in einer Textdatei abgespeichert.
 * Die Dateien subject enthalten Informationen zu den Testpersonen. Darin ist die Subject-ID, die erzeugten Watt während des Tests, das Geburtsjahr sowie die Testdauer gespeichert. Die Informationen sind als json-Datei gespeichert. 
 
+NOTE-JHU: Datenbeschreibung für Aufgabe 2.1 könnte noch genauer sein (Auflösung, Inhalt) - bin ich hier in der falschen Datei? 
+
+
 ### Design and implementation constraints
 
 Die Benutzeroberfläche besteht vorerst nur aus einer Kommandozeile und einem Plot zur Visualisierung der Daten. Entsprechende Änderungen können in zukünftigen Versionen noch vorgenommen werden. 

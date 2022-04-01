@@ -27,5 +27,6 @@
 
 #%% UC 2.7 Speichern der Daten
 # Es werden zwei seperate Ordner erstellt, in den einen Ordner werden erfolgreiche Testdurchläufe gespeichert.
+# NOTE-JHU: Aufpassen beim Programmieren dann. Die Ordner werden nur beim ersten Mal erstellt. 
 # In dem anderen werden abgebrochene Durchläufe gespeichert.
 # Es werden sowohl die Textdateien, als auch die Plots und Diagramme gespeichert.
