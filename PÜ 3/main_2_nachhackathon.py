@@ -161,6 +161,8 @@ if manual_termination != False:
 
 
 # Speichern der Daten
+## Festgelegte Informationen (ID, Terminationsgrund, durchschnittlicher Puls, maximaler Puls, Testdauer, Leistung, durschnittliche Leistung) werden in einem json-Dokument im Ordner result_data gespeichert.
+
 data = {"User ID": subject_data["subject_id"], "Reason for test termation": manual_termination, "Average Heart Rate": average_hr_test, "Maximum Heart Rate": subject_max_hr, "Test Length (s)": len(power_data_watts), "Test Power (W)": subject_data["test_power_w"], "Average Power": peaks_downsampled["Power (Watt)"].mean()}
 
 json_data_to_save = json.dumps(data)
