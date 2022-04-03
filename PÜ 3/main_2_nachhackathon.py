@@ -11,7 +11,7 @@ import os
 import pandas as pd
 
 ## Zuerst wird der Ordner der Dateien aufgerufen, dann werden die Dateien in diesem Ordner auf die Endung ".csv" überprüft.
-##Die Dateien mit der ".csv"-Endung werden ausgelesen und anschließend zur leeren Liste "list_of_new_tests" hinzugefügt.
+## Die Dateien mit der ".csv"-Endung werden ausgelesen und anschließend zur leeren Liste "list_of_new_tests" hinzugefügt.
 folder_current = os.path.dirname(__file__) 
 folder_input_data = os.path.join(folder_current, 'input_data')
 for file in os.listdir(folder_input_data):
@@ -107,15 +107,16 @@ check_termination(peaks['average_HR_10s'],subject_data)
 #%% UC 2.4 Erstellen einer Zusammenfassung
 
 ## Für die Zusammenfassung werden verarbeiteten Daten aus den vorherigen Use Cases herangezogen.
+## Dies wird in der Funktion make_summary durchgeführt.
 ## Die Ergebnisse werden als string ausgegeben.  
-
-print("Summary for Subject " + str(subject_data["subject_id"]))
-print("Year of birth:  " + str(subject_data["birth_year"]))
-print("Test level power in W:  " + str(subject_data["test_power_w"]))
-print(" \n")
-print("Maximum HR was: " + str(maximum_hr))
-print("Was test terminated because exceeding HR " + str(termination))
-
+def make_summary(__file__):
+    subject = "Summary for Subject " + str(subject_data["subject_id"])
+    birth = "Year of birth:  " + str(subject_data["birth_year"])
+    power = "Test level power in W:  " + str(subject_data["test_power_w"])
+    HR = "Maximum HR was: " + str(maximum_hr)
+    terminated = "Was test terminated because exceeding HR: " + str(termination)
+    print(subject,"\n", birth,"\n", power, "\n", HR, "\n", terminated)
+make_summary(subject_data)
 ## Ausgabe einer Zusammenfassung
 
 #%% UC 2.5 Visualisierung der Daten
@@ -155,7 +156,7 @@ peaks_downsampled.plot()
 
 #%% UC 2.6 Manuelle Eingabe eines Abbruchkritierums
 
-## Abfrage an Nutzer:in, ob Abgebrochen werden soll
+## Abfrage an Nutzer:in, ob abgebrochen werden soll
 ## Der Diagnostiker*in wird über die Kommandozeile gefragt ob der Test als invalide gezählt werden soll. 
 ## Sollte etwas eingegeben werden, wird für die Variable termination der Wert True abgespeichert. 
 
@@ -171,6 +172,8 @@ if manual_termination != False:
 
 # Speichern der Daten
 ## Festgelegte Informationen (ID, Terminationsgrund, durchschnittlicher Puls, maximaler Puls, Testdauer, Leistung, durschnittliche Leistung) werden in einem json-Dokument im Ordner result_data gespeichert.
+## Die Unicode-Zeichen werden als utf-8 codiert.
+## Durch die Einstellung ensure_ascii=False werden alle Zeichen so ausgegeben wie sie sind.
 
 data = {"User ID": subject_data["subject_id"], "Reason for test termation": manual_termination, "Average Heart Rate": average_hr_test, "Maximum Heart Rate": subject_max_hr, "Test Length (s)": len(power_data_watts), "Test Power (W)": subject_data["test_power_w"], "Average Power": peaks_downsampled["Power (Watt)"].mean()}
 
@@ -183,4 +186,4 @@ results_file = os.path.join(folder_input_data, 'data.json')
 with open(results_file, 'w', encoding='utf-8') as f:
     json.dump(json_data_to_save, f, ensure_ascii=False, indent=4)
 
-# %%
+#
