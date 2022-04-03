@@ -65,8 +65,7 @@ find_average_hr(ekg_data['ECG'])
 
 #%% UC 2.3 Analysieren der Daten auf Abbruch-Kriterium
 
-## Erstellen der Variablen termination als boolean.
-termination = False
+
 
 ## Vergleich der Maximalen Herzfrequenz mit Alter des Patienten
 
@@ -87,13 +86,23 @@ subject_data = json.load(f)
 
 ## Das Abbruchkriterium (Puls > 90% der maximalen Herzfrequenz) wird geprüft. 
 ## Sollte das Kriterium erfüllt sein, wird termination als true festgelegt. 
+def check_termination(peaks_array,subject_data_json):
+    """In der Funktion wird zu nächst das Maximum der Herzfrequenz ermittelt. 
+    Danach wird dieses Maximum mit dem Alter des Patienten verglichen. 
+    Die Funktion gibt die Variablen termination und maximum_hr zurück"""
+    ## Erstellen der Variablen termination als boolean.
+    global termination
+    termination = False
+    global maximum_hr
+    maximum_hr = peaks_array.max()
+    global subject_max_hr
+    subject_max_hr = 220 - (2022 - subject_data_json["birth_year"])
 
-maximum_hr = peaks['average_HR_10s'].max()
+    if maximum_hr > subject_max_hr*0.90:
+        termination = True
+    return termination, maximum_hr, subject_max_hr
 
-subject_max_hr = 220 - (2022 - subject_data["birth_year"])
-
-if maximum_hr > subject_max_hr*0.90:
-    termination = True
+check_termination(peaks['average_HR_10s'],subject_data)
 
 #%% UC 2.4 Erstellen einer Zusammenfassung
 
