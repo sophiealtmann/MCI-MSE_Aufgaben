@@ -39,11 +39,16 @@ import neurokit2 as nk
 ekg_data=pd.DataFrame()
 ekg_data["ECG"] = new_ecg_data["Subject_3"]
 
-
 def find_average_hr(__file__):
     """Berechnet die durchschnittliche Herzfrequenz:
-    die Peaks der EKG-Daten werden gesucht und ihr durchschnittlicher Wert wird berechnet
-    die Funktion gibt peaks und average_hr_test zurück """
+    Argument: 
+        __file__: Array mit EKG-Daten
+    
+    Returns:  
+        peaks[average_HR_10s]: Array mit den Durchschnittlichen Puls-Werten, in 10s-Schritten
+        average_hr_test(int): durchschnittlicheer Puls über den gesamten Test 
+    
+    Plot: peaks[avaerage_HR_10s] wird geplotet"""
 # Find peaks
     global peaks
     peaks, info = nk.ecg_peaks(__file__, sampling_rate=1000)
@@ -85,19 +90,30 @@ f = open(file_name)
 subject_data = json.load(f)
 
 ## Das Abbruchkriterium (Puls > 90% der maximalen Herzfrequenz) wird geprüft. 
-## Sollte das Kriterium erfüllt sein, wird termination als true festgelegt. 
+## Sollte das Kriterium erfüllt sein, wird termination als True festgelegt. 
 def check_termination(peaks_array,subject_data_json):
-    """In der Funktion wird zu nächst das Maximum der Herzfrequenz ermittelt. 
-    Danach wird dieses Maximum mit dem Alter des Patienten verglichen. 
-    Die Funktion gibt die Variablen termination und maximum_hr zurück"""
+    """Prüfung des Abbruchkriteriums:
+    Arguments: 
+        peaks_array: array mit den Durchschnittlichen Herzfrequenzwerten
+        subject_data_json: zu einem Dictionary vorverarbeitete json Datei die das Geburtsjahr des Patieten enthält
+    Returns: 
+        termination(bool): Boolean der angibt ob der Test als gültig gezählt wird
+        maximum_hr(int): Maximaler Puls der beim Test errreicht wurde.
+        subject_max_hr(int): Pulswert der von dem Patienten aus gesundheitlichen Gründen nicht überschritten werden sollte. """
+  
     ## Erstellen der Variablen termination als boolean.
     global termination
     termination = False
+    
+    ## Erstellen der Variablen maximum_hr. Aus dem Array wird der Maximalwert ausgelesen. 
     global maximum_hr
     maximum_hr = peaks_array.max()
+    
+    ## Erstellen der Variablen subject_max_hr. Das Alter wird aus dem Dictionary ausgelesen und daraus wird der Maximalpuls berechnet. 
     global subject_max_hr
     subject_max_hr = 220 - (2022 - subject_data_json["birth_year"])
 
+    ## Überprüfen des Abbruchkriteriums. 
     if maximum_hr > subject_max_hr*0.90:
         termination = True
     return termination, maximum_hr, subject_max_hr
@@ -187,3 +203,4 @@ with open(results_file, 'w', encoding='utf-8') as f:
     json.dump(json_data_to_save, f, ensure_ascii=False, indent=4)
 
 #
+# %%
