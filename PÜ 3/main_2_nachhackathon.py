@@ -39,10 +39,10 @@ import neurokit2 as nk
 ekg_data=pd.DataFrame()
 ekg_data["ECG"] = new_ecg_data["Subject_3"]
 
-def find_average_hr(__file__):
+def find_average_hr(egk_data):
     """Berechnet die durchschnittliche Herzfrequenz:
     Argument: 
-        __file__: Array mit EKG-Daten
+        egk_data: Array mit EKG-Daten
     
     Returns:  
         peaks[average_HR_10s]: Array mit den Durchschnittlichen Puls-Werten, in 10s-Schritten
