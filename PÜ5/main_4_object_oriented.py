@@ -224,6 +224,16 @@ iterator = 0                                        # Zähler, der die gefundene
 for test in list_of_new_tests:                      # Alle Tests werden nacheinander durchlaufen
     test.create_hr_data()                           # Erstelle Herzraten aus den EKG-Daten
     test.add_subject(list_of_subjects[iterator])    # Fügt einem Test die passenden Versuchspersonen hinzu
+    test.add_power_data(list_of_power_data[iterator])
+    test.evaluate_termination()
+    test.create_plot()
+    test.ask_for_termination()
+    test.save_data()
+    test.create_summary()
+
+    
+
+
 
     """
     Fügen Sie hier den Programmablauf ein, indem Sie die Methoden und Klassen von oben nutzen
@@ -231,3 +241,5 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
 
     iterator = iterator + 1
 
+
+# %%
