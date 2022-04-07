@@ -4,7 +4,12 @@
 import pandas as pd
 import neurokit2 as nk
 import json
-import statistics
+import logging 
+
+#%% Erstellen eines Logs
+ 
+logger=logging.getLogger('access_log')
+
 
 # %%
 # Definition of Classes
