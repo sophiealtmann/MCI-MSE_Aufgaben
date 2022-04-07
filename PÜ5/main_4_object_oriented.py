@@ -4,6 +4,7 @@
 import pandas as pd
 import neurokit2 as nk
 import json
+import statistics
 
 # %%
 # Definition of Classes
@@ -106,6 +107,11 @@ class Test:
         self.hr_peaks['average_HR_10s'] = self.hr_peaks.rolling(window=10000).mean()*60*1000
         
         self.maximum_hr = self.hr_peaks['average_HR_10s'].max()
+        
+        ## Calculate heart rate variance
+        self.hrv_time = nk.hrv_time(self.hr_peaks, sampling_rate=1000)
+        self.variance_hr = self.hrv_time['HRV_MeanNN'].values[0]
+    
 
         #self.peaks['average_HR_10s'].plot()
 
@@ -138,6 +144,7 @@ class Test:
         print("Year of birth:  " + str(self.subject.birth_year))
         print("Test level power in W:  " + str(self.subject.test_power_w))
         print("Maximum HR was: " + str(self.maximum_hr))
+        print("Variance of HR was: " +str(self.variance_hr))
         print("Was test terminated because exceeding HR: " + str(self.terminated))
         print("Was test terminated because for other reasons: " + str(self.manual_termination))
 
@@ -181,8 +188,7 @@ class Test:
 
         with open(__results_file, 'w', encoding='utf-8') as f:
             json.dump(__data, f, ensure_ascii=False, indent=4)
-
-
+    
 
 
 
