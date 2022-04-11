@@ -4,12 +4,6 @@
 import pandas as pd
 import neurokit2 as nk
 import json
-import logging 
-
-#%% Erstellen eines Logs
- 
-logger=logging.getLogger('access_log')
-
 
 # %%
 # Definition of Classes
@@ -112,11 +106,6 @@ class Test:
         self.hr_peaks['average_HR_10s'] = self.hr_peaks.rolling(window=10000).mean()*60*1000
         
         self.maximum_hr = self.hr_peaks['average_HR_10s'].max()
-        
-        ## Calculate heart rate variance
-        self.hrv_time = nk.hrv_time(self.hr_peaks, sampling_rate=1000)
-        self.variance_hr = self.hrv_time['HRV_MeanNN'].values[0]
-    
 
         #self.peaks['average_HR_10s'].plot()
 
@@ -149,7 +138,6 @@ class Test:
         print("Year of birth:  " + str(self.subject.birth_year))
         print("Test level power in W:  " + str(self.subject.test_power_w))
         print("Maximum HR was: " + str(self.maximum_hr))
-        print("Variance of HR was: " +str(self.variance_hr))
         print("Was test terminated because exceeding HR: " + str(self.terminated))
         print("Was test terminated because for other reasons: " + str(self.manual_termination))
 
@@ -193,7 +181,8 @@ class Test:
 
         with open(__results_file, 'w', encoding='utf-8') as f:
             json.dump(__data, f, ensure_ascii=False, indent=4)
-    
+
+
 
 
 
@@ -235,16 +224,6 @@ iterator = 0                                        # Zähler, der die gefundene
 for test in list_of_new_tests:                      # Alle Tests werden nacheinander durchlaufen
     test.create_hr_data()                           # Erstelle Herzraten aus den EKG-Daten
     test.add_subject(list_of_subjects[iterator])    # Fügt einem Test die passenden Versuchspersonen hinzu
-    test.add_power_data(list_of_power_data[iterator])
-    test.evaluate_termination()
-    test.create_plot()
-    test.ask_for_termination()
-    test.save_data()
-    test.create_summary()
-
-    
-
-
 
     """
     Fügen Sie hier den Programmablauf ein, indem Sie die Methoden und Klassen von oben nutzen
@@ -252,5 +231,3 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
 
     iterator = iterator + 1
 
-
-# %%
