@@ -1,6 +1,6 @@
 {
     "User ID": "1",
-    "Reason for test termation": "False",
+    "Reason for test termation": false,
     "Average Heart Rate": 112.33333333333333,
     "Maximum Heart Rate": 174.0,
     "Test Length (s)": 180,
