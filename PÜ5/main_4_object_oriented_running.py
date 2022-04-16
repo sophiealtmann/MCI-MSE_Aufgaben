@@ -165,15 +165,15 @@ class Test:
         """
         Ask the diagnostician if the test should be terminated
         """
-        self.manual_termination = False
+    
         self.manual_termination = input("Is this test invalid? (leave blank if valid): ")
+        if self.manual_termination == "":
+             self.manual_termination = False
 
         if self.manual_termination != False:
             self.termination = True
-        
-        if self.manual_termination != False:    
-            logger.info('Test of subject ' +str(self.subject_id)+ ' has been marked as invalid because of ' + str(self.manual_termination))
 
+            logger.info('Test of subject ' +str(self.subject_id)+ ' has been marked as invalid because of ' + str(self.manual_termination))
 
     def create_plot(self):
         """
@@ -202,7 +202,6 @@ class Test:
         with open(__results_file, 'w', encoding='utf-8') as f:
             json.dump(__data, f, ensure_ascii=False, indent=4)
     
-
 
 
 # %% Eigentlich Ablauf der Event-Pipeline
@@ -250,10 +249,6 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
     test.save_data()
     test.create_summary()
 
-    
-
-
-
     """
     Fügen Sie hier den Programmablauf ein, indem Sie die Methoden und Klassen von oben nutzen
     """
@@ -263,5 +258,7 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
 
 
 
+
+# %%
 
 # %%
