@@ -1,8 +1,14 @@
 {
-    "User ID": "2",
-    "Reason for test termation": "sad",
-    "Average Heart Rate": 127.33333333333333,
-    "Maximum Heart Rate": 192.0,
-    "Test Length (s)": 180,
-    "Test Power (W)": 100
+    "Test": [
+        {
+            "User 2": {
+                "Reason for test termation": "ad",
+                "Average Heart Rate": 127.33333333333333,
+                "Maximum Heart Rate": 192.0,
+                "Test Length (s)": 180,
+                "Test Power (W)": 100,
+                "Plot": "c:\\Users\\sophi\\OneDrive\\Documents\\BA-MGST\\Programmierübung\\MCI-MSE_Aufgaben\\PÜ5\\result_data\\figure_2.png"
+            }
+        }
+    ]
 }
