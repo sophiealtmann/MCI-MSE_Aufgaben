@@ -2,12 +2,12 @@
     "Test": [
         {
             "User 2": {
-                "Reason for test termation": "ad",
+                "Reason for test termation": false,
                 "Average Heart Rate": 127.33333333333333,
                 "Maximum Heart Rate": 192.0,
                 "Test Length (s)": 180,
                 "Test Power (W)": 100,
-                "Plot": "c:\\Users\\sophi\\OneDrive\\Documents\\BA-MGST\\Programmierübung\\MCI-MSE_Aufgaben\\PÜ5\\result_data\\figure_2.png"
+                "Plot": "c:\\Users\\vaich\\OneDrive\\Dokumente\\MCI\\22SS\\programmiern\\MCI-MSE_Aufgaben\\PÜ5\\result_data\\figure_2.png"
             }
         }
     ]
