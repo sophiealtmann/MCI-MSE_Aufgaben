@@ -1,9 +1,11 @@
 # %%
 # Import external packages
 
+from unittest import result
 import pandas as pd
 import neurokit2 as nk
 import json
+import matplotlib.pyplot as plt
 import logging
 
 #%% Log erstellen 
@@ -154,6 +156,7 @@ class Test:
         print("Year of birth:  " + str(self.subject.birth_year))
         print("Test level power in W:  " + str(self.subject.test_power_w))
         print("Maximum HR was: " + str(self.maximum_hr))
+        print("Avarage HR was:"+str(self.average_hr_test))
         print("Variance of HR was: " +str(self.variance_hr))
         print("Was test terminated because exceeding HR: " + str(self.terminated))
         print("Was test terminated because for other reasons: " + str(self.manual_termination))
@@ -175,6 +178,13 @@ class Test:
 
             logger.info('Test of subject ' +str(self.subject_id)+ ' has been marked as invalid because of ' + str(self.manual_termination))
 
+    def build_plot_path(self):
+        working_dir = os.path.dirname(__file__)
+        result_data_dir= os.path.join(working_dir,'result_data')
+        file_name= f'figure_'+str(self.subject_id)+'.png'
+        file_path= os.path.join(result_data_dir, file_name)
+        return file_path    
+    
     def create_plot(self):
         """
         Create a plot of the test
@@ -185,14 +195,31 @@ class Test:
 
         self.plot_data["Power (Watt)"] = pd.to_numeric(self.power_data.power_data_watts)
         self.plot_data.plot()
+
+       
+        
     
 
     def save_data(self):
         """
         Store the test data in a JSON file
         """
-        __data = {"User ID": self.subject_id, "Reason for test termation": self.manual_termination, "Average Heart Rate": self.average_hr_test, "Maximum Heart Rate": self.maximum_hr, "Test Length (s)": self.power_data.duration_s, "Test Power (W)": self.subject.test_power_w}
-
+        __data = {
+            "Test":[
+                {
+                    "User "+str(self.subject_id): 
+                    {
+                        "Reason for test termation": self.manual_termination,
+                        "Average Heart Rate": self.average_hr_test, 
+                        "Maximum Heart Rate": self.maximum_hr, 
+                        "Test Length (s)": self.power_data.duration_s, 
+                        "Test Power (W)": self.subject.test_power_w,
+                        "Plot": self.build_plot_path()
+                    }
+                }
+            ]
+        }
+              
         __folder_current = os.path.dirname(__file__) 
         __folder_input_data = os.path.join(__folder_current, 'result_data')
         
